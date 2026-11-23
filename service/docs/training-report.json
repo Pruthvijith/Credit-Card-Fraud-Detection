@@ -1,0 +1,45 @@
+{
+  "model_version": "fraud-logreg-v1",
+  "feature_version": "transaction-features-v1",
+  "feature_names": [
+    "log_amount",
+    "merchant_risk",
+    "night_transaction",
+    "log_card_age_days",
+    "log_txn_24h",
+    "country_mismatch"
+  ],
+  "data_source": "seeded synthetic generator, not real transactions",
+  "trained_at_utc": "2026-11-23T14:34:01.718822+00:00",
+  "seed": 42,
+  "split_counts": {
+    "train": 2400,
+    "validation": 800,
+    "test": 800
+  },
+  "positive_rate_test": 0.0275,
+  "decision_threshold": 0.05207598201462627,
+  "validation_review_capacity": 0.1,
+  "validation_alert_rate": 0.09875,
+  "test_always_allow_cost_eur": 11000.0,
+  "test_average_precision_baseline": 0.0275,
+  "standardized_log_odds": {
+    "log_amount": -0.3031533542604643,
+    "merchant_risk": 0.2978295955407173,
+    "night_transaction": 0.36082215336982026,
+    "log_card_age_days": -0.0019448964842041843,
+    "log_txn_24h": 0.0719109045658631,
+    "country_mismatch": 0.1674017493263119
+  },
+  "test_false_negatives": 18,
+  "test_false_positives": 55,
+  "false_negative_cost_eur": 500,
+  "false_positive_cost_eur": 20,
+  "test_average_precision": 0.0701155702648701,
+  "test_roc_auc": 0.7422879177377892,
+  "test_precision": 0.06779661016949153,
+  "test_recall": 0.18181818181818182,
+  "test_alert_rate": 0.07375,
+  "test_expected_cost_eur": 10100.0,
+  "model_sha256": "c60384db9c8b41d543db7584cef59a1425aa0f3be1b55d0f598b5cd12c6126cd"
+}

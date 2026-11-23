@@ -1,0 +1,7 @@
+services:
+  score:
+    build: .
+    environment:
+      MODEL_DIR: /data/model
+    ports: ["127.0.0.1:8080:8080"]
+    volumes: ["./artifacts:/data/model:ro"]

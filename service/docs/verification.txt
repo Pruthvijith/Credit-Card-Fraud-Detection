@@ -1,0 +1,50 @@
+Local execution | Python 3.12.14 | Linux
+
+$ python -m unittest discover -s tests -v
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_drift (test_platform.PlatformTests.test_drift) ... ok
+test_feature_contract_and_rejection (test_platform.PlatformTests.test_feature_contract_and_rejection) ... ok
+test_synthetic_reproducibility (test_platform.PlatformTests.test_synthetic_reproducibility) ... ok
+test_threshold_cost (test_platform.PlatformTests.test_threshold_cost) ... ok
+test_train_and_serving (test_platform.PlatformTests.test_train_and_serving) ... ok
+test_unavailable_model_returns_503 (test_platform.PlatformTests.test_unavailable_model_returns_503) ... ok
+test_repeat_register_rollback_and_reject_corrupt_candidate (test_registry.RegistryTests.test_repeat_register_rollback_and_reject_corrupt_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.116s
+
+OK
+exit 0
+
+$ python -m pyflakes src tests scripts
+
+exit 0
+
+$ python -m compileall -q src scripts tests
+
+exit 0
+
+$ python scripts/demo.py
+{
+  "restored": "7c75fedec016346cfe43be68",
+  "sample_score": 0.022005370483668952,
+  "test_always_allow_cost_eur": 11000.0,
+  "test_average_precision_baseline": 0.0275,
+  "test_false_negatives": 18,
+  "test_false_positives": 55,
+  "test_average_precision": 0.0701155702648701,
+  "test_roc_auc": 0.7422879177377892,
+  "test_precision": 0.06779661016949153,
+  "test_recall": 0.18181818181818182,
+  "test_alert_rate": 0.07375,
+  "test_expected_cost_eur": 10100.0
+}
+exit 0
+
+Second independent demo run: matching decision outputs (elapsed timings excluded).
+
+$ python scripts/http_smoke.py
+{"sequential_requests": 50, "loopback_p50_ms": 43.99, "loopback_p95_ms": 47.89}
+{"ready": 200, "score": {"transaction_id": "demo-1", "probability": 0.12383673683572262, "decision": "review", "threshold": 0.05207598201462627, "model_version": "fraud-logreg-v1", "release_id": "7c75fedec016346cfe43be68", "feature_version": "transaction-features-v1"}, "invalid": 422, "metrics": 200}
+exit 0
