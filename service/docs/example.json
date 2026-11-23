@@ -1,0 +1,14 @@
+{
+  "restored": "7c75fedec016346cfe43be68",
+  "sample_score": 0.022005370483668952,
+  "test_always_allow_cost_eur": 11000.0,
+  "test_average_precision_baseline": 0.0275,
+  "test_false_negatives": 18,
+  "test_false_positives": 55,
+  "test_average_precision": 0.0701155702648701,
+  "test_roc_auc": 0.7422879177377892,
+  "test_precision": 0.06779661016949153,
+  "test_recall": 0.18181818181818182,
+  "test_alert_rate": 0.07375,
+  "test_expected_cost_eur": 10100.0
+}

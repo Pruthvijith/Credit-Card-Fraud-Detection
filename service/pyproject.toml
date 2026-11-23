@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools==84.2.1", "wheel==0.48.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fraud-risk-mlops-platform"
+version = "0.1.0"
+description = "Reproducible synthetic fraud-risk inference and monitoring reference platform"
+requires-python = ">=3.12,<3.13"
+dependencies = ["fastapi==0.141.1", "uvicorn==0.52.1", "pydantic==2.13.4", "numpy==2.3.5", "scikit-learn==1.8.0", "joblib==1.5.3", "prometheus-client==0.23.1"]
+
+[project.optional-dependencies]
+dev = ["httpx==0.28.1", "pyflakes==3.4.0"]
+
+[project.scripts]
+fraud-registry = "fraud_platform.registry:main"
+fraud-train = "fraud_platform.train:main"
+fraud-monitor = "fraud_platform.monitoring:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
